@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.teamdagger.bankhoxler.domain.registration.UIEvent
 import com.teamdagger.bankhoxler.domain.registration.ValidationEvent
+import com.teamdagger.bankhoxler.screens.account_history.HistoryActivity
 import com.teamdagger.bankhoxler.screens.withdrawal.WithdrawalActivity
 
 @Composable
@@ -117,6 +118,13 @@ fun RegistrationForm(
             }
         ) {
             Text("Withdrawal")
+        }
+        Button(
+            onClick = {
+                context.startActivity(Intent(context, HistoryActivity::class.java))
+            }
+        ) {
+            Text("History")
         }
     }
 }
