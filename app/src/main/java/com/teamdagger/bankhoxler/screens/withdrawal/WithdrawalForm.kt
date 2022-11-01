@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -64,7 +65,8 @@ fun WithdrawalForm(
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
                 onClick = {
@@ -75,22 +77,20 @@ fun WithdrawalForm(
             ) {
                 Text("[-]")
             }
-            Surface(
+            Card(
                 modifier = Modifier
-                    .padding(all = 24.dp)
-                    .shadow(
-                        elevation = 2.dp,
-                        shape = RoundedCornerShape(
-                            corner = CornerSize(12.dp),
-                        ),
-                    )
-                    .background(
-                        color = Color.Cyan,
-                        shape = RoundedCornerShape(corner = CornerSize(12.dp))
-                    )
+                    .padding(all = 24.dp),
+                backgroundColor = Color.Cyan,
+                shape = RoundedCornerShape(
+                    corner = CornerSize(12.dp)
+                ),
+                elevation = 12.dp,
             ) {
                 Text(
-                    "$$moneyAmount"
+                    text = "$$moneyAmount",
+                    modifier = Modifier
+                        .padding(all = 24.dp),
+
                 )
             }
             Button(
@@ -117,7 +117,7 @@ fun BalanceInfo(
     viewModel: WithdrawViewModel = viewModel()
 ) {
     val image =  R.drawable.grindelwald
-    val balance = viewModel.accountBalance.collectAsState()
+    val balance by viewModel.accountBalance.collectAsState()
     val context = LocalContext.current
 
     Log.w("FKR-RENDER", "JUST RENDERED BALANCE")
@@ -141,8 +141,8 @@ fun BalanceInfo(
                 .size(86.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        if (balance.value != null) {
-            balance.value?.let {
+        if (balance != null) {
+            balance?.let {
                 Text("$${it.balance}")
             }
         } else {
