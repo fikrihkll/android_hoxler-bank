@@ -1,5 +1,6 @@
 package com.teamdagger.bankhoxler.screens.registration_form
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.teamdagger.bankhoxler.domain.registration.UIEvent
 import com.teamdagger.bankhoxler.domain.registration.ValidationEvent
+import com.teamdagger.bankhoxler.screens.withdrawal.WithdrawalActivity
 
 @Composable
 fun RegistrationForm(
@@ -107,6 +109,14 @@ fun RegistrationForm(
             Text(
                 "Submit"
             )
+        }
+        Spacer(modifier = Modifier.height(24.dp))
+        Button(
+            onClick = {
+                context.startActivity(Intent(context, WithdrawalActivity::class.java))
+            }
+        ) {
+            Text("Withdrawal")
         }
     }
 }

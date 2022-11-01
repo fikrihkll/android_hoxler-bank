@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bank Hoxler</string>
+    <string name="title_activity_withdrawal">WithdrawalActivity</string>
 </resources>
