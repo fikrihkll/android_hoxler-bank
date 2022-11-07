@@ -3,6 +3,7 @@ package com.teamdagger.bankhoxler.screens.account_history
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,8 @@ import com.teamdagger.bankhoxler.screens.withdrawal.ui.theme.BankHoxlerTheme
 
 class HistoryActivity : ComponentActivity() {
 
+    val viewModel: HistoryViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -32,7 +35,6 @@ class HistoryActivity : ComponentActivity() {
                     ){
                         AccountInfoView()
                         HistoryListView()
-                        HistoryCount()
                     }
                 }
             }
